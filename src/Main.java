@@ -104,6 +104,8 @@ public class Main {
 		panel.add(textField_1);
 		
 		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setEnabled(false);
+		btnNewButton.setBackground(Color.RED);
 		btnNewButton.setBounds(267, 361, 89, 23);
 		panel.add(btnNewButton);
 	}
