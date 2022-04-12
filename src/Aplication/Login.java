@@ -19,6 +19,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.JButton;
 
 public class Login extends JPanel {
 
@@ -57,6 +58,7 @@ public class Login extends JPanel {
 
 		
 		JTextField lblIngresarUsuario = new JTextField("Ingrese su nombre de usuario");
+		//JTextField lblIngresarUsuario = new JTextField();
 		lblIngresarUsuario.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblIngresarUsuario.setForeground(new Color(103, 93, 93));
 		lblIngresarUsuario.setBounds(31, 343, 363, 39);
@@ -92,6 +94,7 @@ public class Login extends JPanel {
 		View.add(lblUsuario_1);
 		
 		JPasswordField lblIngresarPassword = new JPasswordField("Micontraseña");
+		//JPasswordField lblIngresarPassword = new JPasswordField();
 		lblIngresarPassword.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblIngresarPassword.setForeground(new Color(103, 93, 93));
 		lblIngresarPassword.setBounds(31, 482, 351, 39);
@@ -136,11 +139,12 @@ public class Login extends JPanel {
 		
 		lblbtnEntrar.addMouseListener(new MouseAdapter() {			
 			
-			String usuario = lblIngresarUsuario.getText();
-			String contraseña = String.valueOf(lblIngresarPassword.getPassword());
-			
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				String usuario = lblIngresarUsuario.getText();
+				String contraseña = String.valueOf(lblIngresarPassword.getPassword());
+				
 				if(cambiacolor == true) {
 					btnEnviar.setBackground(new Color(0, 0, 0));
 
@@ -154,6 +158,10 @@ public class Login extends JPanel {
 				System.out.println(usuario);
 				System.out.println(contraseña);
 				
+				
+				JOptionPane.showMessageDialog(null, "<html>Usuario: "+usuario 
+													+"<br>Password: "+contraseña 
+													+" </html>");
 				
 				//Inicio inicio = new Inicio();
 				//mp.showpane(inicio, View);
