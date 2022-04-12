@@ -159,9 +159,23 @@ public class Login extends JPanel {
 				System.out.println(contraseña);
 				
 				
-				JOptionPane.showMessageDialog(null, "<html>Usuario: "+usuario 
-													+"<br>Password: "+contraseña 
-													+" </html>");
+				/*preparedStatement = conexion.prepareStatement("select * from  where id = ?");
+				
+				preparedStatement.setString(1, id);
+				
+				resultSet = preparedStatement.executeQuery();
+				
+				while(resultSet.next()) {
+					   for (int x=1;x<=resultSet.getMetaData().getColumnCount();x++)
+					     System.out.print(resultSet.getString(x)+ "\t");
+					   
+					   System.out.println(""); 
+					   
+					txtNombre.setText(resultSet.getString("nombre"));
+					CBHorario.addItem(resultSet.getString("Horario"));
+					txtDireccion.setText(resultSet.getString("direccion"));
+					txtCargo.setText(resultSet.getString("cargo"));
+				}*/
 				
 				//Inicio inicio = new Inicio();
 				//mp.showpane(inicio, View);
