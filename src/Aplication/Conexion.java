@@ -8,7 +8,8 @@ public class Conexion {
 		Connection conexion = null;
 		try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/prueba","root","2909");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/friedfood","root","2909");
+            System.out.println("conectado");
         }catch(Exception i){
         	System.out.println(i);
         }

@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
@@ -154,28 +155,34 @@ public class Login extends JPanel {
 					cambiacolor = true;
 				}
 				
-				
 				System.out.println(usuario);
 				System.out.println(contraseña);
 				
+				conexion = Conexion.conectar();
 				
-				/*preparedStatement = conexion.prepareStatement("select * from  where id = ?");
-				
-				preparedStatement.setString(1, id);
-				
-				resultSet = preparedStatement.executeQuery();
-				
-				while(resultSet.next()) {
-					   for (int x=1;x<=resultSet.getMetaData().getColumnCount();x++)
-					     System.out.print(resultSet.getString(x)+ "\t");
-					   
-					   System.out.println(""); 
-					   
-					txtNombre.setText(resultSet.getString("nombre"));
-					CBHorario.addItem(resultSet.getString("Horario"));
-					txtDireccion.setText(resultSet.getString("direccion"));
-					txtCargo.setText(resultSet.getString("cargo"));
+				/*try {
+		
+					preStatement = conexion.prepareStatement("select * from usuario");
+					
+					//preStatement.setString(1, id);
+					
+					resultSet = preStatement.executeQuery();
+					
+					while(resultSet.next()) {
+						   for (int x=1;x<=resultSet.getMetaData().getColumnCount();x++)
+						     System.out.println(resultSet.getString(x)+ "\t");
+						   
+						   //System.out.println(resultSet.getString("nombre")); 
+						   
+						  
+					}
+								
+				}catch(Exception i) {
+					System.out.println(i);
+					
 				}*/
+				
+				
 				
 				//Inicio inicio = new Inicio();
 				//mp.showpane(inicio, View);

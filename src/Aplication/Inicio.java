@@ -21,16 +21,16 @@ public class Inicio extends JPanel {
 		
 		JLabel Background = new JLabel("");
 		Background.setBounds(0, 0, 1078, 684);
-		Background.setIcon(new ImageIcon(Inicio.class.getResource("/Imagenes/Inicio Background.jpg")));
+		Background.setIcon(new ImageIcon(Inicio.class.getResource("/image/Inicio Background.jpg")));
 		add(Background);
 		
 		JLabel cordel = new JLabel("New label");
-		cordel.setIcon(new ImageIcon(Inicio.class.getResource("/Imagenes/Cordel.png")));
+		cordel.setIcon(new ImageIcon(Inicio.class.getResource("/image/Cordel.png")));
 		cordel.setBounds(408, 0, 261, 83);
 		Background.add(cordel);
 		
 		JLabel footer = new JLabel("New label");
-		footer.setIcon(new ImageIcon(Inicio.class.getResource("/Imagenes/Footer.jpg")));
+		footer.setIcon(new ImageIcon(Inicio.class.getResource("/image/Footer.jpg")));
 		footer.setBounds(0, 612, 1080, 72);
 		Background.add(footer);
 
@@ -41,32 +41,32 @@ public class Inicio extends JPanel {
 		footer.add(lblCopyright);
 		
 		JLabel Menu = new JLabel("New label");
-		Menu.setIcon(new ImageIcon(Inicio.class.getResource("/Imagenes/GrupoMen\u00FA.png")));
+		Menu.setIcon(new ImageIcon(Inicio.class.getResource("/image/GrupoMen\u00FA.png")));
 		Menu.setBounds(165, 149, 177, 199);
 		Background.add(Menu);
 		
 		JLabel Ofertas = new JLabel("New label");
-		Ofertas.setIcon(new ImageIcon(Inicio.class.getResource("/Imagenes/GrupoOfertas.png")));
+		Ofertas.setIcon(new ImageIcon(Inicio.class.getResource("/image/GrupoOfertas.png")));
 		Ofertas.setBounds(445, 146, 177, 199);
 		Background.add(Ofertas);
 		
 		JLabel Órdenes = new JLabel("New label");
-		Órdenes.setIcon(new ImageIcon(Inicio.class.getResource("/Imagenes/Grupo\u00D3rdenes.png")));
+		Órdenes.setIcon(new ImageIcon(Inicio.class.getResource("/image/Grupo\u00D3rdenes.png")));
 		Órdenes.setBounds(705, 146, 177, 199);
 		Background.add(Órdenes);
 		
 		JLabel Inventario = new JLabel("New label");
-		Inventario.setIcon(new ImageIcon(Inicio.class.getResource("/Imagenes/GrupoInventario.png")));
+		Inventario.setIcon(new ImageIcon(Inicio.class.getResource("/image/GrupoInventario.png")));
 		Inventario.setBounds(165, 379, 177, 199);
 		Background.add(Inventario);
 		
 		JLabel Facturas = new JLabel("New label");
-		Facturas.setIcon(new ImageIcon(Inicio.class.getResource("/Imagenes/GrupoFacturas.png")));
+		Facturas.setIcon(new ImageIcon(Inicio.class.getResource("/image/GrupoFacturas.png")));
 		Facturas.setBounds(445, 391, 177, 199);
 		Background.add(Facturas);
 		
 		JLabel Usuarios = new JLabel("New label");
-		Usuarios.setIcon(new ImageIcon(Inicio.class.getResource("/Imagenes/GrupoUsuarios.png")));
+		Usuarios.setIcon(new ImageIcon(Inicio.class.getResource("/image/GrupoUsuarios.png")));
 		Usuarios.setBounds(705, 391, 177, 199);
 		Background.add(Usuarios);
 		
