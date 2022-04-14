@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.MouseInfo;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -11,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import java.awt.event.MouseMotionAdapter;
 
 public class Main {
 
@@ -18,6 +20,10 @@ public class Main {
 	private JDesktopPane Vista;
 
 	MostrarPanel mp = new MostrarPanel();
+	
+	//location variable of the mouse
+	int xmouse, ymouse;
+	
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -44,15 +50,30 @@ public class Main {
 		frame.setBackground(Color.DARK_GRAY);
 		frame.setBounds(0, 0, 1080, 720);
 		frame.setLocationRelativeTo(null);
-		frame.setLayout(null);
+		frame.getContentPane().setLayout(null);
 		
 		JLabel Barrasuperior = new JLabel();
+		Barrasuperior.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				int x = e.getXOnScreen();
+				int y = e.getYOnScreen();
+				frame.setLocation(x - xmouse, y - ymouse);
+			}
+		});
+		Barrasuperior.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				xmouse =  e.getX();
+				ymouse = e.getY();
+			}
+		});
 		Barrasuperior.setIcon(new ImageIcon(Main.class.getResource("/image/Barrasuperior.jpg")));
 		Barrasuperior.setBounds(0, 0, 1084, 35);
 		Barrasuperior.setBackground(Color.BLACK);
 		//Barrasuperior.setBorder(new LineBorder(new Color(0, 0, 0), 0));
 		Barrasuperior.setLayout(null);
-		frame.add(Barrasuperior);
+		frame.getContentPane().add(Barrasuperior);
 		
 		JLabel btncerrar = new JLabel();
 		btncerrar.setIcon(new ImageIcon(Main.class.getResource("/image/btncerrar.png")));
@@ -94,7 +115,7 @@ public class Main {
 		Vista = new JDesktopPane();
 		Vista.setBackground(Color.WHITE);
 		Vista.setBounds(0, 35, 1080, 685);
-		frame.add(Vista);
+		frame.getContentPane().add(Vista);
 		
 		Login login= new Login();
 		mp.showpane(login, Vista);

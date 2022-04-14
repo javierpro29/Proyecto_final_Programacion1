@@ -75,7 +75,7 @@ public class Login extends JPanel {
 					lblIngresarUsuario.setText(null);		
 					lblIngresarUsuario.setForeground(new Color(0, 0, 0));
 				}
-				System.out.println("El valor del campo usuario es:  "+lblIngresarUsuario.getText());
+				//System.out.println("El valor del campo usuario es:  "+lblIngresarUsuario.getText());
 			}
 		});
 		
@@ -110,7 +110,7 @@ public class Login extends JPanel {
 					lblIngresarPassword.setText(null);		
 					lblIngresarPassword.setForeground(new Color(0, 0, 0));
 				}
-				System.out.println("El valor del campo password es: "+lblIngresarPassword.getPassword());
+				//System.out.println("El valor del campo password es: "+lblIngresarPassword.getPassword());
 				
 			}
 		});
@@ -155,37 +155,40 @@ public class Login extends JPanel {
 					cambiacolor = true;
 				}
 				
-				System.out.println(usuario);
-				System.out.println(contraseña);
-				
 				conexion = Conexion.conectar();
 				
-				/*try {
+				try {
 		
-					preStatement = conexion.prepareStatement("select * from usuario");
+					preStatement = conexion.prepareStatement("select * from usuarios where username = ?");
 					
-					//preStatement.setString(1, id);
+					preStatement.setString(1, usuario);
 					
 					resultSet = preStatement.executeQuery();
 					
-					while(resultSet.next()) {
-						   for (int x=1;x<=resultSet.getMetaData().getColumnCount();x++)
-						     System.out.println(resultSet.getString(x)+ "\t");
-						   
-						   //System.out.println(resultSet.getString("nombre")); 
-						   
-						  
-					}
-								
+					/*while(resultSet.next()) {
+						   for (int x=1; x<=resultSet.getMetaData().getColumnCount(); x++) {
+							   //String username = resultSet.getString("username");
+							   //System.out.println(username);
+							   System.out.print(resultSet.getString(x)+ "\t");
+						   } 
+					}*/
+					
+					resultSet.next();
+					String a = resultSet.getString("username");	
+					String b = resultSet.getString("userpassword");				
+					
+					
+					if(contraseña.equals(b)) {
+							Inicio inicio = new Inicio();
+							mp.showpane(inicio, View);
+							conexion.close();				
+					}else {
+						JOptionPane.showMessageDialog(null, "Sus credenciales son incorrectas", "Error de inision de sesion", JOptionPane.WARNING_MESSAGE);
+					}			
 				}catch(Exception i) {
 					System.out.println(i);
 					
-				}*/
-				
-				
-				
-				//Inicio inicio = new Inicio();
-				//mp.showpane(inicio, View);
+				}
 				
 			}
 		});
