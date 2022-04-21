@@ -27,6 +27,7 @@ public class Login extends JPanel {
 	private JDesktopPane Vista;
 	
 	MostrarPanel mp = new MostrarPanel();
+	Usuario user = new Usuario();
 	
 	
 	/*Variables de coneccion con la base de datos*/
@@ -75,14 +76,9 @@ public class Login extends JPanel {
 					lblIngresarUsuario.setText(null);		
 					lblIngresarUsuario.setForeground(new Color(0, 0, 0));
 				}
-				//System.out.println("El valor del campo usuario es:  "+lblIngresarUsuario.getText());
 			}
 		});
-		
-		
-		
-		
-		
+
 		JSeparator separator = new JSeparator();
 		separator.setBackground(Color.BLACK);
 		separator.setBounds(31, 386, 351, 2);
@@ -105,13 +101,11 @@ public class Login extends JPanel {
 		lblIngresarPassword.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
 				if("Micontraseña".equals(String.valueOf(lblIngresarPassword.getPassword()))){
 					lblIngresarPassword.setText(null);		
 					lblIngresarPassword.setForeground(new Color(0, 0, 0));
 				}
-				//System.out.println("El valor del campo password es: "+lblIngresarPassword.getPassword());
-				
+		
 			}
 		});
 		
@@ -155,40 +149,59 @@ public class Login extends JPanel {
 					cambiacolor = true;
 				}
 				
-				conexion = Conexion.conectar();
+				
+				//validación del usuario
+				if(user.validarUsuario(usuario, contraseña) == 1) {
+					//Inicio inicio = new Inicio();
+					Sistema sistema = new Sistema();
+					mp.showpane(sistema, View);
+				}else {
+					JOptionPane.showMessageDialog(null, "Sus credenciales son incorrectas", "Error de inision de sesion", JOptionPane.WARNING_MESSAGE);
+				}
+								
+				
+				/*conexion = Conexion.conectar();
 				
 				try {
 		
-					preStatement = conexion.prepareStatement("select * from usuarios where username = ?");
+					preStatement = conexion.prepareStatement("select * from usuarios where username = ? and  userpassword = ?");
 					
 					preStatement.setString(1, usuario);
+					preStatement.setString(2, contraseña);
 					
 					resultSet = preStatement.executeQuery();
 					
-					/*while(resultSet.next()) {
-						   for (int x=1; x<=resultSet.getMetaData().getColumnCount(); x++) {
-							   //String username = resultSet.getString("username");
-							   //System.out.println(username);
-							   System.out.print(resultSet.getString(x)+ "\t");
-						   } 
-					}*/
+					int resultado = 0;
+				
 					
-					resultSet.next();
-					String a = resultSet.getString("username");	
-					String b = resultSet.getString("userpassword");				
-					
-					
-					if(contraseña.equals(b)) {
+					if(resultSet.next()) {
+						
+						
+						String username = resultSet.getString("username");
+						String rol = resultSet.getString("permisos");
+						
+						System.out.println(username);
+						System.out.println(rol);
+						
+						resultado = 1;
+						
+						if(resultado == 1) {
 							Inicio inicio = new Inicio();
 							mp.showpane(inicio, View);
-							conexion.close();				
+						}
 					}else {
 						JOptionPane.showMessageDialog(null, "Sus credenciales son incorrectas", "Error de inision de sesion", JOptionPane.WARNING_MESSAGE);
-					}			
+					}
+					
+					
+						
 				}catch(Exception i) {
 					System.out.println(i);
-					
-				}
+					JOptionPane.showMessageDialog(null, "Sus credenciales son incorrectas", "Error de inision de sesion", JOptionPane.WARNING_MESSAGE);
+
+				}*/
+				
+				
 				
 			}
 		});

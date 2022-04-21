@@ -4,25 +4,35 @@ import javax.swing.JPanel;
 import java.awt.Color;
 
 import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Font;
+import javax.swing.JRadioButton;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Inicio extends JPanel {
 
-	/**
-	 * Create the panel.
-	 */
+	
+	MostrarPanel mp = new MostrarPanel();
+	
 	public Inicio() {
 		setBackground(Color.DARK_GRAY);
 		setSize(1080, 684);
 		setLayout(null);
 		
+		JDesktopPane View = new JDesktopPane();
+		View.setBackground(Color.WHITE);
+		View.setBounds(0, 0, 1080, 685);
+		add(View);
+		
 		
 		JLabel Background = new JLabel("");
 		Background.setBounds(0, 0, 1078, 684);
 		Background.setIcon(new ImageIcon(Inicio.class.getResource("/image/Inicio Background.jpg")));
-		add(Background);
+		View.add(Background);
 		
 		JLabel cordel = new JLabel("New label");
 		cordel.setIcon(new ImageIcon(Inicio.class.getResource("/image/Cordel.png")));
@@ -41,6 +51,13 @@ public class Inicio extends JPanel {
 		footer.add(lblCopyright);
 		
 		JLabel Menu = new JLabel("New label");
+		Menu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Sistema menu = new Sistema();
+				mp.showpane(menu, View);
+			}
+		});
 		Menu.setIcon(new ImageIcon(Inicio.class.getResource("/image/GrupoMen\u00FA.png")));
 		Menu.setBounds(165, 149, 177, 199);
 		Background.add(Menu);
@@ -55,19 +72,14 @@ public class Inicio extends JPanel {
 		Órdenes.setBounds(705, 146, 177, 199);
 		Background.add(Órdenes);
 		
-		JLabel Inventario = new JLabel("New label");
-		Inventario.setIcon(new ImageIcon(Inicio.class.getResource("/image/GrupoInventario.png")));
-		Inventario.setBounds(165, 379, 177, 199);
-		Background.add(Inventario);
-		
 		JLabel Facturas = new JLabel("New label");
 		Facturas.setIcon(new ImageIcon(Inicio.class.getResource("/image/GrupoFacturas.png")));
-		Facturas.setBounds(445, 391, 177, 199);
+		Facturas.setBounds(305, 381, 177, 199);
 		Background.add(Facturas);
 		
 		JLabel Usuarios = new JLabel("New label");
 		Usuarios.setIcon(new ImageIcon(Inicio.class.getResource("/image/GrupoUsuarios.png")));
-		Usuarios.setBounds(705, 391, 177, 199);
+		Usuarios.setBounds(591, 380, 178, 199);
 		Background.add(Usuarios);
 		
 		
